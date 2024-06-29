@@ -45,6 +45,6 @@ public class Administrador {
     }
     
     public String mostrarEstadoDeTramite(){
-        
+        return "" ;
     }
 }
