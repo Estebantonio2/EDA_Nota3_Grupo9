@@ -42,13 +42,24 @@ public class Administrador {
         interesado.setTelefono(telefono);
         interesado.setEmail(email);
         interesado.setTipo(tipo);
+        Sistema.GestionInt.agregarInteresado(interesado);
+        Sistema.variable = 1;
     }
     
-    public void ingresarExpediente(){
-        
+    public void ingresarExpediente(Expediente expediente, String id, String asunto, String documentoRef, 
+            int prioridad, Interesado interesado, Dependencia dependencia){
+        expediente.setAsunto(asunto);
+        expediente.setDependencia(dependencia);
+        expediente.setDocumentoRef(documentoRef);
+        expediente.setId(id);
+        expediente.setInteresado(interesado);
+        expediente.setPrioridad(prioridad);
+        Sistema.GestionExp.agregarExpediente(expediente);
+        Sistema.variable = 2;
     }
     
-    public void registrarMovimiento(){
+    public void registrarMovimiento(Expediente expediente, Dependencia dependencia){
+        Dependencia[] dependencias = Sistema.GestionDep.getDependencias();
         
     }
     
