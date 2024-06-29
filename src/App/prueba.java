@@ -10,6 +10,6 @@ package App;
  */
 public class prueba {
     public static void main(String[] args) {
-        System.out.println("funciona por favor");
+        System.out.println("pablito mi pastor");
     }
 }
