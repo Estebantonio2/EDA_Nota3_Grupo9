@@ -11,6 +11,9 @@ package App;
 public class Interesado {
     private String DNI, nombre, telefono, email, tipo;
 
+    public Interesado() {
+    }
+    
     public Interesado(String DNI, String nombre, String telefono, String email, String tipo) {
         this.DNI = DNI;
         this.nombre = nombre;

@@ -10,9 +10,10 @@ package App;
  */
 public class prueba {
     public static void main(String[] args) {
-        System.out.println("pablito es mi pastor");
-        System.out.println("y nada me faltará");
-        System.out.println("amén");
-        System.out.println("nina es mi segundo pastor");
+        Dependencia d1 = new Dependencia("xxxxxx");
+        Interesado i1 = new Interesado();
+        Expediente e1 = new Expediente(d1);
+        System.out.println(e1.getHoraInicio());
+        System.out.println(e1.getFechaInicio());
     }
 }

@@ -11,6 +11,9 @@ package App;
 public class Administrador {
     private String nombreUsuario, contraseña;
 
+    public Administrador() {
+    }
+
     public Administrador(String nombreUsuario, String contraseña) {
         this.nombreUsuario = nombreUsuario;
         this.contraseña = contraseña;
@@ -32,19 +35,32 @@ public class Administrador {
         this.contraseña = contraseña;
     }
     
-    public void expediente(){
+    // pense que se podria nombrar al objeto como parametro, pero no, chequear, posible solucion
+    public void ingresarInteresado(Interesado interesado, String DNI, String nombre, String telefono, String email, String tipo){
+        interesado.setDNI(DNI);
+        interesado.setNombre(nombre);
+        interesado.setTelefono(telefono);
+        interesado.setEmail(email);
+        interesado.setTipo(tipo);
+    }
+    
+    public void ingresarExpediente(){
         
     }
     
-    public void registrarMovimientoExpediente(){
+    public void registrarMovimiento(){
         
     }
     
-    public void finalizacionTramite(){
+    public void deshacerMovimiento(){
         
     }
     
-    public String mostrarEstadoDeTramite(){
-        return "" ;
+    public void registrarFinalizacion(){
+        
+    }
+    
+    public void mostrarTramite(){
+        
     }
 }
