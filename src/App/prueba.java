@@ -13,5 +13,6 @@ public class prueba {
         System.out.println("pablito es mi pastor");
         System.out.println("y nada me faltará");
         System.out.println("amén");
+        System.out.println("nina es mi segundo pastor");
     }
 }
