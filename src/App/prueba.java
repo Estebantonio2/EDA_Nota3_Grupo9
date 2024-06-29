@@ -11,5 +11,7 @@ package App;
 public class prueba {
     public static void main(String[] args) {
         System.out.println("pablito es mi pastor");
+        System.out.println("y nada me faltará");
+        System.out.println("amén");
     }
 }
