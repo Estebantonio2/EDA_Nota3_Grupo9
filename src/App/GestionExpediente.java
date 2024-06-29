@@ -86,7 +86,7 @@ public class GestionExpediente {
             for(int j = 0; j < cantidad-1-i; j++){
                 LocalTime tiempo1 = resultado[j].getTiempoInicio().toLocalTime();
                 LocalTime tiempo2 = resultado[j+1].getTiempoInicio().toLocalTime();
-                if(tiempo1.isBefore(tiempo2)){
+                if(tiempo1.isAfter(tiempo2)){
                     Expediente aux = resultado[j];
                     resultado[j] = resultado[j+1];
                     resultado[j+1] = aux;                    
