@@ -62,5 +62,5 @@ public class Interesado {
         this.tipo = tipo;
     }
     
-    
+       
 }

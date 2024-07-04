@@ -14,8 +14,8 @@ public class GestionInteresado {
     private Lista interesados;
 
     public GestionInteresado() {
-        interesados = new Lista<Interesado>();
         cantidad = 0;
+        interesados = new Lista<Interesado>();
     }
 
     public int getCantidad() {
@@ -35,14 +35,16 @@ public class GestionInteresado {
     }
     
     public void agregarInteresado(Interesado interesado){
-        this.interesados.agregar(interesado);
+        interesados.agregar(interesado);
+        cantidad++;
     }
     
-    public void eliminarInteresado(String Nombre){
+    public void eliminarIngresado(String DNI){
         for(int i = 1; i <= this.interesados.longitud(); i++){
             Interesado inte = (Interesado) this.interesados.iesimo(i);
-            if(inte.getNombre().equalsIgnoreCase(Nombre)){
+            if(inte.getDNI().equalsIgnoreCase(DNI)){
                 this.interesados.eliminar(inte);
+                cantidad--;
                 break;
             }
         }

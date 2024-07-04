@@ -10,10 +10,9 @@ package App;
  */
 public class prueba {
     public static void main(String[] args) {
-        Dependencia d1 = new Dependencia("xxxxxxx");
-        Interesado i1 = new Interesado();
-        Expediente e1 = new Expediente(d1);
-        System.out.println(e1.getHoraInicio());
-        System.out.println(e1.getFechaInicio());
+//        Dependencia d1 = new Dependencia("xxxxxxx");
+//        Expediente e1 = new Expediente(d1);
+//        System.out.println(e1.getHoraInicio());
+//        System.out.println(e1.getFechaInicio());
     }
 }

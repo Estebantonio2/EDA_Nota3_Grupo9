@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package App;
+import TDA.*;
 
 /**
  *
@@ -10,18 +11,23 @@ package App;
  */
 public class GestionDependencia {
     private int cantidad;
-    private Dependencia[] dependencias;
+    private Lista dependencias;
     
     public GestionDependencia(){
-        dependencias = new Dependencia[5];
+        dependencias = new Lista<Dependencia>();
         cantidad = 0;
     }
 
-    public Dependencia[] getDependencias() {
+    public GestionDependencia(int cantidad, Lista dependencias) {
+        this.cantidad = cantidad;
+        this.dependencias = dependencias;
+    }
+
+    public Lista getDependencias() {
         return dependencias;
     }
 
-    public void setDependencias(Dependencia[] dependencias) {
+    public void setDependencias(Lista dependencias) {
         this.dependencias = dependencias;
     }
 
@@ -34,23 +40,17 @@ public class GestionDependencia {
     }
     
     public void agregarDependencia(Dependencia dependencia){
-        if(cantidad < dependencias.length){
-            dependencias[cantidad] = dependencia;
-            cantidad++;
-        }else{
-            // interfaz grafica
-        }
+        dependencias.agregar(dependencia);
+        cantidad++;
     }
     
     public void eliminarDependencia(String nombre){
-        for(int i = 0; i < cantidad; i++){
-            Dependencia dep = this.dependencias[i];
-            if(dep.getNombre().equalsIgnoreCase(nombre) && i != this.dependencias.length-1){
-                this.dependencias[i] = this.dependencias[i+1];
+        for(int i = 1; i <= this.dependencias.longitud(); i++){
+            Dependencia dep = (Dependencia) this.dependencias.iesimo(i);
+            if(dep.getNombre().equalsIgnoreCase(nombre)){
+                this.dependencias.eliminar(dep);
                 cantidad--;
-            }else{
-                this.dependencias[this.dependencias.length-1] = null;
-                cantidad--;
+                break;
             }
         }
     }

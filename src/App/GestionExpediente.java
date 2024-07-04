@@ -37,6 +37,7 @@ public class GestionExpediente {
     
     public void agregarExpediente(Expediente expediente){
         this.expedientes.agregar(expediente);
+        cantidad++;
     }
     
     public void eliminarExpediente(String id){
@@ -44,6 +45,7 @@ public class GestionExpediente {
             Expediente exp = (Expediente) this.expedientes.iesimo(i);
             if(exp.getId().equalsIgnoreCase(id)){
                 this.expedientes.eliminar(exp);
+                cantidad--;
                 break;
             }
         }

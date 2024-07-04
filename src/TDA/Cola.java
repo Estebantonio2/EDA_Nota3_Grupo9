@@ -77,4 +77,14 @@ public class Cola<T> {
         }
         return i;
     }
+    
+    public Cola<T> clonar() {
+        Cola<T> nuevaCola = new Cola<>();
+        Nodo<T> aux = frente;
+        while (aux != null) {
+            nuevaCola.encolar(aux.getElemento());
+            aux = aux.getSgteNodo();
+        }
+        return nuevaCola;
+    }
 }

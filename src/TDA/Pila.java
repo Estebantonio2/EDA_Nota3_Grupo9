@@ -68,4 +68,24 @@ public class Pila<T> {
         }
         return i;
     }
+    
+    public Pila<T> clonar() {
+        Pila<T> pilaAux = new Pila<>();
+        Pila<T> nuevaPila = new Pila<>();
+
+        // Paso 1: Vaciar la pila original en la pila auxiliar
+        while (!this.isEmpty()) {
+            pilaAux.push(this.pop());
+        }
+
+        // Paso 2: Volver a llenar la pila original y llenar la nueva pila
+        while (!pilaAux.isEmpty()) {
+            T elemento = pilaAux.pop();
+            this.push(elemento);  // Restaurar la pila original
+            nuevaPila.push(elemento);  // Llenar la nueva pila
+        }
+
+        return nuevaPila;
+    }
+    
 }

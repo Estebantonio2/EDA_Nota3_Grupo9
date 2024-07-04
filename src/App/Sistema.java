@@ -4,39 +4,34 @@
  */
 package App;
 import TDA.*;
+import java.util.Arrays;
 
 /**
  *
  * @author esteb
  */
 public class Sistema {
-    public static Pila movimientos;
+    public static Lista movimientos;
     public static GestionExpediente GestionExp;
-    public static GestionInteresado GestionInt;
     public static GestionDependencia GestionDep;
+    public static GestionInteresado GestionInt;
     public static int variable;
     
     public Sistema(){
-        movimientos = new Pila<Dependencia>();
+        movimientos = new Lista<Movimiento>();
         GestionExp = new GestionExpediente();
-        GestionInt = new GestionInteresado();
         GestionDep = new GestionDependencia();
+        GestionInt = new GestionInteresado();
+        Dependencia aux = new Dependencia("Administracion", "");
+        GestionDep.agregarDependencia(aux);
     }
 
-    public static Pila getMovimientos() {
+    public static Lista getMovimientos() {
         return movimientos;
     }
 
-    public static void setMovimientos(Pila movimientos) {
+    public static void setMovimientos(Lista movimientos) {
         Sistema.movimientos = movimientos;
-    }
-
-    public static GestionExpediente getGestionExp() {
-        return GestionExp;
-    }
-
-    public static void setGestionExp(GestionExpediente GestionExp) {
-        Sistema.GestionExp = GestionExp;
     }
 
     public static GestionInteresado getGestionInt() {
@@ -45,6 +40,14 @@ public class Sistema {
 
     public static void setGestionInt(GestionInteresado GestionInt) {
         Sistema.GestionInt = GestionInt;
+    }
+    
+    public static GestionExpediente getGestionExp() {
+        return GestionExp;
+    }
+
+    public static void setGestionExp(GestionExpediente GestionExp) {
+        Sistema.GestionExp = GestionExp;
     }
 
     public static GestionDependencia getGestionDep() {
@@ -63,10 +66,10 @@ public class Sistema {
         Sistema.variable = variable;
     }
     
-    public static void actualizarDatos(GestionInteresado GI, GestionExpediente GE, GestionDependencia GD){
-        GestionInt = GI;
+    public static void actualizarDatos(GestionExpediente GE, GestionDependencia GD, GestionInteresado GI){
         GestionExp = GE;
         GestionDep = GD;
+        GestionInt = GI;
     }
     
     public static void mostrarAleras(){
@@ -98,8 +101,88 @@ public class Sistema {
         }
     }
     
-    public static void deshacerAccion(){
-        Dependencia aux = (Dependencia) movimientos.top();
-        
+    public static Movimiento extraerMovimiento(String id){
+        for(int i = 1; i <= movimientos.longitud(); i++){
+            Movimiento aux = (Movimiento) movimientos.iesimo(i);
+            if(aux.getIdExp().equalsIgnoreCase(id)){
+                return aux;
+            }
+        }
+        return null;
     }
+    
+    public static void actualizarMovimiento(Movimiento newMov){
+        for(int i = 1; i <= movimientos.longitud(); i++){
+            Movimiento aux = (Movimiento) movimientos.iesimo(i);
+            if(aux.getIdExp().equalsIgnoreCase(newMov.getIdExp())){
+                movimientos.eliminar(i);
+                movimientos.insertar(newMov, i);
+            }
+        }
+    }
+    
+    public static void deshacerAccion(String id){
+        Movimiento aux = extraerMovimiento(id);
+        if(!aux.getNombreDeps().isEmpty()){
+            String nombreDepFin = (String) aux.getNombreDeps().pop();
+            String nombreDepInicio = "";
+            if(aux.getNombreDeps().isEmpty()){
+                nombreDepInicio = "Administracion";
+            }else{
+                nombreDepInicio = (String) aux.getNombreDeps().top();
+            }
+            Lista<Dependencia> dependencias = GestionDep.getDependencias();
+
+            Expediente exp = null;
+            for(int i = 1; i <= dependencias.longitud(); i++){
+                if(dependencias.iesimo(i).getNombre().equalsIgnoreCase(nombreDepFin)){
+                    exp = dependencias.iesimo(i).sacarUltimo();
+                    break;
+                }
+            }
+
+            for(int i = 1; i <= dependencias.longitud(); i++){
+                if(dependencias.iesimo(i).getNombre().equalsIgnoreCase(nombreDepInicio)){
+                    dependencias.iesimo(i).colocarPrincipio(exp);
+                    break;
+                }
+            }
+
+            GestionDep.setDependencias(dependencias);
+
+            Lista<Expediente> expedientes = GestionExp.getExpedientes();
+            for(int i = 1; i <= expedientes.longitud(); i++){
+                if(expedientes.iesimo(i).getId().equalsIgnoreCase(id)){
+                    expedientes.iesimo(i).setNombreDep(nombreDepInicio);
+                }
+            }
+
+            GestionExp.setExpedientes(expedientes);
+            
+        }else{
+            
+        }
+    }
+    
+    public static String[] dependenciasDisps(){
+        int disponibles = 0;
+        for(int i = 0; i < GestionDep.getCantidad(); i++){
+            Dependencia aux = (Dependencia) GestionDep.getDependencias().iesimo(i);
+            if(!aux.estaVacia()){
+                disponibles++;
+            }
+        }
+        String[] dispos = new String[disponibles];
+        int x = 0;
+        for(int i = 0; i < GestionDep.getCantidad(); i++){
+            Dependencia aux = (Dependencia) GestionDep.getDependencias().iesimo(i);
+            if(!aux.estaVacia()){
+                dispos[x] = aux.getNombre();
+                x++;
+            }
+        }
+        return dispos;
+    }
+    
+        
 }
