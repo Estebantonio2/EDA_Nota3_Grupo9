@@ -145,5 +145,6 @@ public class Administrador {
             }
         }
         Sistema.setMovimientos(movimientos);
+        Sistema.eliminarSeguimiento(id);
     }
 }

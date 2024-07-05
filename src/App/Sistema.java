@@ -83,6 +83,16 @@ public class Sistema {
         }
     }
     
+    public static void eliminarSeguimiento(String id){
+        for(int i = 1; i <= movimientos.longitud(); i++){
+            Movimiento aux = (Movimiento) movimientos.iesimo(i);
+            if(aux.getIdExp().equalsIgnoreCase(id)){
+                movimientos.eliminar(i);
+                break;
+            }
+        }
+    }
+    
     public static void deshacerAccion(String id){
         Movimiento aux = extraerMovimiento(id);
         if(!aux.getNombreDeps().isEmpty()){

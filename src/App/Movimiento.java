@@ -42,14 +42,6 @@ public class Movimiento {
         this.nombreDeps.push(nombreDep);
     }
     
-    public String deshacerMovimiento(){
-        if(!nombreDeps.isEmpty()){
-            return (String) nombreDeps.pop();
-        }else{
-            return null;
-        }
-    }
-    
     public void mostrar(){
         System.out.println(this.idExp);
         Pila<String> aux = nombreDeps.clonar();
