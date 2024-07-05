@@ -125,26 +125,5 @@ public class Sistema {
             
         }
     }
-    
-    public static String[] dependenciasDisps(){
-        int disponibles = 0;
-        for(int i = 0; i < GestionDep.getCantidad(); i++){
-            Dependencia aux = (Dependencia) GestionDep.getDependencias().iesimo(i);
-            if(!aux.estaVacia()){
-                disponibles++;
-            }
-        }
-        String[] dispos = new String[disponibles];
-        int x = 0;
-        for(int i = 0; i < GestionDep.getCantidad(); i++){
-            Dependencia aux = (Dependencia) GestionDep.getDependencias().iesimo(i);
-            if(!aux.estaVacia()){
-                dispos[x] = aux.getNombre();
-                x++;
-            }
-        }
-        return dispos;
-    }
-    
         
 }
