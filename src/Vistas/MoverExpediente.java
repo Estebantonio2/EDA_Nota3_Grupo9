@@ -14,8 +14,6 @@ import javax.swing.JOptionPane;
 public class MoverExpediente extends javax.swing.JFrame {
     private Sistema s;
     private Administrador adm;
-    private GestionExpediente GestionExp;
-    private GestionDependencia GestionDep;
 
     /**
      * Creates new form MoverExpediente
@@ -27,15 +25,12 @@ public class MoverExpediente extends javax.swing.JFrame {
         adm.actualizarEncargado();
 
         
-        this.GestionExp = Sistema.getGestionExp();
-        this.GestionDep = Sistema.getGestionDep();
-        
-        Lista<Expediente> expedientes = Sistema.getGestionExp().getExpedientes();
+        Lista<Expediente> expedientes = Sistema.GestionExp.getExpedientes();
         for(int i = 1; i <= expedientes.longitud(); i++){
             this.jComboBox1.addItem(expedientes.iesimo(i).getId());
         }
         
-        Lista<Dependencia> dependencias = this.GestionDep.getDependencias();
+        Lista<Dependencia> dependencias = Sistema.GestionDep.getDependencias();
         for(int i = 1; i <= dependencias.longitud(); i++){
             String nombreDepAux = dependencias.iesimo(i).getNombre();
             this.jComboBox2.addItem(nombreDepAux);

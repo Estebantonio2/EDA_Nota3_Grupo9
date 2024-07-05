@@ -23,7 +23,6 @@ public class FinalizarExpediente extends javax.swing.JFrame {
         this.adm = adm;
         this.s = s;
         adm.actualizarEncargado();
-
         
         Lista<Expediente> expedientes = Sistema.GestionExp.getExpedientes();
         for(int i = 1; i <= expedientes.longitud(); i++){

@@ -112,11 +112,6 @@ public class InicioAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    public void close(){
-        WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
-    }
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String nombreUsuario = this.jTextField1.getText();
@@ -128,8 +123,6 @@ public class InicioAdministrador extends javax.swing.JFrame {
         
         adm.actualizarEncargado();
 
-        
-//        close();
         MenuPrincipal menu = new MenuPrincipal(adm, s);
         menu.setVisible(true);
         dispose();

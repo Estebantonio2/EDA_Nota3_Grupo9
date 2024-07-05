@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 public class VisualizarExpedientes extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private Administrador adm;
-    private GestionExpediente GestionExp;
     private Sistema s;
     
 
@@ -28,8 +27,6 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
         this.adm = adm;
         adm.actualizarEncargado();
 
-        
-        this.GestionExp = Sistema.getGestionExp();
         this.jTable1.setModel(modeloTabla);
         modeloTabla.addColumn("ID");
         modeloTabla.addColumn("Prioridad");
@@ -44,7 +41,7 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
     
     private void moverArregloAModeloTabla(){
         // Recuperar la lista de Alumno
-        Lista<Expediente> expedientes = GestionExp.getExpedientes();
+        Lista<Expediente> expedientes = Sistema.GestionExp.getExpedientes();
         for (int i = 1; i <= expedientes.longitud(); i++) {
             String[] fila = new String[7];
             fila[0] = String.valueOf(expedientes.iesimo(i).getId());
@@ -86,6 +83,7 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -141,7 +139,7 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Ordenar Prioridad");
+        jButton6.setText("Ordenar Faltantes Prioridad");
         jButton6.setToolTipText("");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +147,7 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Ordenar Antiguedad");
+        jButton7.setText("Ordenar Faltantes Antiguedad");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -163,6 +161,13 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("Visualizacion regular");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,7 +178,8 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton5)
-                    .addComponent(jButton7))
+                    .addComponent(jButton7)
+                    .addComponent(jButton9))
                 .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -216,7 +222,9 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
                     .addComponent(jButton6)
                     .addComponent(jButton7))
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(20, 20, 20))
@@ -264,23 +272,25 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
     private void mostrarExpedientes(Expediente[] orden){
         modeloTabla.setRowCount(0);
         for (int i = 0; i < orden.length; i++) {
-            String[] fila = new String[7];
-            fila[0] = String.valueOf(orden[i].getId());
-            fila[1] = Integer.toString(orden[i].getPrioridad());
-            fila[2] = orden[i].getAsunto();
-            fila[3] = orden[i].getInteresado().getNombre();
-            fila[4] = orden[i].getNombreDep();
-            fila[5] = orden[i].getFechaInicio() + " " + 
-                    orden[i].getHoraInicio();
-            if(orden[i].getTiempoFin() == null){
-                fila[6] = "-";
-            }else{
-                fila[6] = orden[i].getFechaFin() + " " + 
-                    orden[i].getHoraFin();
+            if(orden[i].getNombreDep() == "Administracion"){
+                String[] fila = new String[7];
+                fila[0] = String.valueOf(orden[i].getId());
+                fila[1] = Integer.toString(orden[i].getPrioridad());
+                fila[2] = orden[i].getAsunto();
+                fila[3] = orden[i].getInteresado().getNombre();
+                fila[4] = orden[i].getNombreDep();
+                fila[5] = orden[i].getFechaInicio() + " " + 
+                        orden[i].getHoraInicio();
+                if(orden[i].getTiempoFin() == null){
+                    fila[6] = "-";
+                }else{
+                    fila[6] = orden[i].getFechaFin() + " " + 
+                        orden[i].getHoraFin();
+                }
+
+                // Agregar esta fila al modelo Tabla
+                modeloTabla.addRow(fila);
             }
-            
-            // Agregar esta fila al modelo Tabla
-            modeloTabla.addRow(fila);
         }
     }
     
@@ -300,6 +310,12 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
         eli.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        new VisualizarExpedientes(adm, s).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,6 +362,7 @@ public class VisualizarExpedientes extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

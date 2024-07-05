@@ -69,7 +69,6 @@ public class Administrador {
         Movimiento m = new Movimiento(expediente.getId());
         Sistema.movimientos.agregar(m);
         
-        Sistema.variable = 2;
     }
     
     public boolean registrarMovimiento(String id, String nombreDep2){
@@ -106,9 +105,10 @@ public class Administrador {
             }else{
                 return false;
             }
+        }else{
+            return false;
         }
 
-        return false;
     }
     
     public void registrarFinalizacion(String id){
