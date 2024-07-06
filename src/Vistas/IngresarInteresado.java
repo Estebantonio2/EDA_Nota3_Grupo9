@@ -79,16 +79,16 @@ public class IngresarInteresado extends javax.swing.JFrame {
         jLabel6.setText("Tipo");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 229, -1));
 
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 229, -1));
 
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 229, -1));
 
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 229, -1));
 
         buttonGroup1.add(jRadioButton1);
@@ -146,7 +146,7 @@ public class IngresarInteresado extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
+                .addContainerGap(158, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(95, 95, 95)
                 .addComponent(jButton2)
@@ -157,7 +157,7 @@ public class IngresarInteresado extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))

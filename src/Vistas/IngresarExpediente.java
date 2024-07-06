@@ -76,7 +76,7 @@ public class IngresarExpediente extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,12 +100,12 @@ public class IngresarExpediente extends javax.swing.JFrame {
 
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Asunto");
 
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Documento Referencia");

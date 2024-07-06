@@ -70,7 +70,7 @@ public class EliminarExpediente extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, 390));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Captura de pantalla 2024-07-06 a la(s) 1.31.53 a. m..png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/captura2.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 110));
 
